@@ -14,16 +14,48 @@ console.log('JS Ok');
 // con difficoltà 2 => tra 1 e 81
 // con difficoltà 3 => tra 1 e 49 (modificato) 
 
+
+let richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
+
+// ciclo di controllo 
+while (isNaN(richiestaUtente) || richiestaUtente > 3 || richiestaUtente < 1) {
+    richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
+}
+
+// richiamo del div nell' HTML 
 const griglia = document.getElementById('square');
 
-const colonneGriglia = 10;
-const righeGriglia = 10;
+// varibili colonne riga 
+let colonneGriglia = 0;
+let righeGriglia = 0;
 
+if (richiestaUtente === 1) {
+    colonneGriglia = 10;
+    righeGriglia = 10;
+} else if (richiestaUtente === 2) {
+    colonneGriglia = 9;
+    righeGriglia = 9;
+} else {
+    colonneGriglia = 7;
+    righeGriglia = 7;
+}
+
+// costante Celle Totali 
 const celleTotali = colonneGriglia * righeGriglia;
 
+// utilizzo un ciclo for generare le celle 
 for (let i = 0; i < celleTotali; i++) {
+
     let celle = document.createElement('div');
-    celle.classList.add('cell-100');
+
+    if (celleTotali === 100) {
+        celle.classList.add('cell-100');
+    } else if (celleTotali === 81) {
+        celle.classList.add('cell-81');
+    } else {
+        celle.classList.add('cell-49');
+    }
+
     griglia.appendChild(celle);
     console.log(celle);
     celle.innerText = i + 1;
