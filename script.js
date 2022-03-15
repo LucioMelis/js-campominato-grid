@@ -13,3 +13,22 @@ console.log('JS Ok');
 // con difficoltà 1 => tra 1 e 100
 // con difficoltà 2 => tra 1 e 81
 // con difficoltà 3 => tra 1 e 49 (modificato) 
+
+const griglia = document.getElementById('square');
+
+const colonneGriglia = 10;
+const righeGriglia = 10;
+
+const celleTotali = colonneGriglia * righeGriglia;
+
+for (let i = 0; i < celleTotali; i++) {
+    let celle = document.createElement('div');
+    celle.classList.add('cell-100');
+    griglia.appendChild(celle);
+    console.log(celle);
+    celle.innerText = i + 1;
+    celle.addEventListener('click', function () {
+        celle.classList.toggle('cell-color');
+    })
+}
+
