@@ -16,32 +16,28 @@ console.log('JS Ok');
 
 
 let richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
+// variabile celleTotali + verifica richiesta utente 
+let celleTotali = valoreCella(richiestaUtente);
+// richiamo del div nell' HTML 
+const griglia = document.getElementById('square');
+
 
 // ciclo di controllo 
 while (isNaN(richiestaUtente) || richiestaUtente > 3 || richiestaUtente < 1) {
     richiestaUtente = parseInt(prompt('Inserisci il Livello: 1-2-3?'));
 }
 
-// richiamo del div nell' HTML 
-const griglia = document.getElementById('square');
-
-// varibili colonne riga 
-let colonneGriglia = 0;
-let righeGriglia = 0;
-
-if (richiestaUtente === 1) {
-    colonneGriglia = 10;
-    righeGriglia = 10;
-} else if (richiestaUtente === 2) {
-    colonneGriglia = 9;
-    righeGriglia = 9;
-} else {
-    colonneGriglia = 7;
-    righeGriglia = 7;
+// funzione celleTotali 
+function valoreCella(richiesta) {
+    if (richiesta === 1) {
+        totaleCelle = 100;
+    } else if (richiesta === 2) {
+        totaleCelle = 81;
+    } else {
+        totaleCelle = 49;
+    }
+    return totaleCelle;
 }
-
-// costante Celle Totali 
-const celleTotali = colonneGriglia * righeGriglia;
 
 // utilizzo un ciclo for generare le celle 
 for (let i = 0; i < celleTotali; i++) {
